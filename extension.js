@@ -35,7 +35,7 @@ function activate(context) {
 				}
 			);
 			
-				vscode.window.showInformationMessage('PDF Compilled');
+				vscode.window.showInformationMessage('PDF Compilled at ' + path);
 			
 		} catch (error) {
 			vscode.window.showErrorMessage(error.message);
