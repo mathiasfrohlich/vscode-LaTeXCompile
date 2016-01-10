@@ -20,6 +20,14 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"Latex",
+		"LaTeX",
+		"latex",
+		"tex",
+		"pdf",
+		"compile"
+	],
 	"activationEvents": [
 		"onCommand:extension.latexCompile"
 	],
