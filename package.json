@@ -4,6 +4,13 @@
 	"description": "An Visual Studio Code Extension, that compiles .tex to .pdf at location",
 	"version": "0.1.0",
 	"publisher": "mathiasfrohlich",
+	"license": "SEE LICENSE IN LICENSE or README.MD",
+	"homepage": "https://github.com/mathiasfrohlich/vscode-LaTeXCompile/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mathiasfrohlich/vscode-LaTeXCompile.git"
+	},
+	"icon": "images/icon.png",
 	"engines": {
 		"vscode": "^0.10.1"
 	},
@@ -19,6 +26,10 @@
 			"command": "extension.latexCompile",
 			"title": "LaTeX: Compile PDF"
 		}]
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
 	},
 	"devDependencies": {
 		"vscode": "0.10.x"

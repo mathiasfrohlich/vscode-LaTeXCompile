@@ -2,7 +2,7 @@
 
 Compiles .tex to -pdf using pdflatex
 
-![Image of Command]()
+![Image of Command](https://raw.githubusercontent.com/mathiasfrohlich/vscode-LaTeXCompile/master/images/command.png)
 
 ## How to install
 * Install [Visual Studio Code](https://code.visualstudio.com/)
@@ -11,7 +11,7 @@ Compiles .tex to -pdf using pdflatex
   From the list of files displayed, select a file to open.
 
 ## Working on:
-Tested on mac with [MacTex](https://tug.org/mactex/) installed.
+Tested on Mac(10.11.1) with [MacTex](https://tug.org/mactex/) installed.
 
 ## Source
 
