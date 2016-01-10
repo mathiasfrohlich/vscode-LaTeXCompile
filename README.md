@@ -21,6 +21,9 @@ Tested on Mac(10.11.1) with [MacTex](https://tug.org/mactex/) installed.
 
 ### Version 0.1.0
 Initial commit
+
+### Version 0.1.1
+Included path in message
         
 ## License
 
