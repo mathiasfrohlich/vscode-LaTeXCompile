@@ -1,0 +1,22 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
+{
+	"version": "0.1.0",
+	"configurations": [
+		{
+			"name": "Launch Extension",
+			"type": "extensionHost",
+			"request": "launch",
+			"runtimeExecutable": "/Users/Ramax/GitHub/vscode-LaTeXCompile",
+			"args": ["--extensionDevelopmentPath=/Users/Ramax/GitHub/vscode-LaTeXCompile" ],
+			"stopOnEntry": false
+		},
+		{
+			"name": "Launch Tests",
+			"type": "extensionHost",
+			"request": "launch",
+			"runtimeExecutable": "/Users/Ramax/GitHub/vscode-LaTeXCompile",
+			"args": ["--extensionDevelopmentPath=/Users/Ramax/GitHub/vscode-LaTeXCompile", "--extensionTestsPath=/Users/Ramax/GitHub/vscode-LaTeXCompile/test" ],
+			"stopOnEntry": false
+		}
+	]
+}

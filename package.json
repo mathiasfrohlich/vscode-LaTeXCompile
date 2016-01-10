@@ -1,0 +1,26 @@
+{
+	"name": "latexcompile",
+	"displayName": "LaTeX Compile",
+	"description": "An Visual Studio Code Extension, that compiles .tex to .pdf at location",
+	"version": "0.1.0",
+	"publisher": "mathiasfrohlich",
+	"engines": {
+		"vscode": "^0.10.1"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.latexCompile"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [{
+			"command": "extension.latexCompile",
+			"title": "LaTeX: Compile PDF"
+		}]
+	},
+	"devDependencies": {
+		"vscode": "0.10.x"
+	}
+}
