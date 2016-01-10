@@ -11,6 +11,9 @@
 		"url": "https://github.com/mathiasfrohlich/vscode-LaTeXCompile.git"
 	},
 	"icon": "images/icon.png",
+	"bugs": {
+		"url": "https://github.com/mathiasfrohlich/vscode-LaTeXCompile/issues"
+	},
 	"engines": {
 		"vscode": "^0.10.1"
 	},
