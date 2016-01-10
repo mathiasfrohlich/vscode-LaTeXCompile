@@ -6,7 +6,7 @@ Compiles .tex to .pdf using pdflatex at current file
 
 ## How to install
 * Install [Visual Studio Code](https://code.visualstudio.com/)
-* Open `View -> Command Palette... and type ext install listFiles`
+* Open `View -> Command Palette... and type ext install latex compile`
 * Restart Visual Studio Code and select the command "`LaTeX: Compile PDF`"
   From the list of files displayed, select a file to open.
 
@@ -36,6 +36,9 @@ Included path in message
 
 ### Version 0.1.2
 Added Contribution guide to README.md
+
+### Version 0.1.3
+Spelling error
         
 ## License
 
