@@ -18,7 +18,7 @@ Compiles .tex to .pdf using pdflatex at current file
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
 
-## Tested on:
+## Tested on
 
 Mac(10.11.1) with [MacTex](https://tug.org/mactex/) installed.
 
