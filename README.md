@@ -38,7 +38,7 @@ Included path in message
 Added Contribution guide to README.md
 
 ### Version 0.1.3
-Spelling error
+Added comments to code
         
 ## License
 
