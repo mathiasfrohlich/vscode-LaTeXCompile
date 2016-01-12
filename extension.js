@@ -13,7 +13,7 @@ function activate(context) {
             var pathFull = vscode.window.activeTextEditor.document.fileName;
             //Only path without file
             var path = getFilePath(pathFull); // get the current file path
-            //onely file name and type
+            //Only file name and type
             var fileNameAndType = getFileNameAndType(pathFull);
             var fileName = getFileName(pathFull);
             var filePath = getFilePath(pathFull);

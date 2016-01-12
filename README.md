@@ -10,6 +10,19 @@ Compiles .tex to .pdf using pdflatex at current file
 * Restart Visual Studio Code and select the command "`LaTeX: Compile PDF`"
   From the list of files displayed, select a file to open.
 
+## Settings
+You can configure the settings, to open the PDF after compile
+
+```
+"properties": {
+	"latexCompile.openAfterCompile": {
+		"type": "boolean",
+		"default": true,
+		"description": "Opens PDF after Latex Compile" 
+	}
+}
+```
+
 ## Contributing
 
 1. Fork it!
@@ -17,10 +30,6 @@ Compiles .tex to .pdf using pdflatex at current file
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
-
-## Tested on
-
-Mac(10.11.1) with [MacTex](https://tug.org/mactex/) installed.
 
 ## Source
 
@@ -39,6 +48,9 @@ Added Contribution guide to README.md
 
 ### Version 0.1.3
 Added comments to code
+
+### Version 0.2.0 thanks to a community contribution.
+Added Open After Compile Feature
         
 ## License
 
