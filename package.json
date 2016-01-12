@@ -36,7 +36,18 @@
 		"commands": [{
 			"command": "extension.latexCompile",
 			"title": "LaTeX: Compile PDF"
-		}]
+		}],
+        "configuration": {
+            "type": "object",
+            "title": "LateX Compile Configuration",
+            "properties": {
+                "latexCompile.openAfterCompile": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Opens PDF after Latex Compile" 
+                }
+            }
+        }
 	},
 	"devDependencies": {
 		"vscode": "0.10.x"

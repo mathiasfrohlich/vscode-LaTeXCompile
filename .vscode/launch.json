@@ -6,17 +6,20 @@
 			"name": "Launch Extension",
 			"type": "extensionHost",
 			"request": "launch",
-			"runtimeExecutable": "/Users/Ramax/GitHub/vscode-LaTeXCompile",
-			"args": ["--extensionDevelopmentPath=/Users/Ramax/GitHub/vscode-LaTeXCompile" ],
-			"stopOnEntry": false
+			"runtimeExecutable": "${execPath}",
+			"args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
+			"stopOnEntry": false,
+			"sourceMaps": true
 		},
 		{
 			"name": "Launch Tests",
 			"type": "extensionHost",
 			"request": "launch",
-			"runtimeExecutable": "/Users/Ramax/GitHub/vscode-LaTeXCompile",
-			"args": ["--extensionDevelopmentPath=/Users/Ramax/GitHub/vscode-LaTeXCompile", "--extensionTestsPath=/Users/Ramax/GitHub/vscode-LaTeXCompile/test" ],
-			"stopOnEntry": false
+			"runtimeExecutable": "${execPath}",
+			"args": ["--extensionDevelopmentPath=${workspaceRoot}", "--extensionTestsPath=${workspaceRoot}/out/test" ],
+			"stopOnEntry": false,
+			"sourceMaps": true,
+			"outDir": "test"
 		}
 	]
 }
