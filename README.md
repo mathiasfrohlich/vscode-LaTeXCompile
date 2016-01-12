@@ -49,8 +49,11 @@ Added Contribution guide to README.md
 ### Version 0.1.3
 Added comments to code
 
-### Version 0.2.0 thanks to a community contribution.
+### Version 0.2.0 
+This version happened thanks to a community contribution.
 Added Open After Compile Feature
+Added Configuration option
+Changed the message display to use status bar instead of showInformationMessage
         
 ## License
 
