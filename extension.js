@@ -1,61 +1,72 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
-	
-	var pdflatex = vscode.commands.registerCommand('extension.latexCompile', function () {	
-		
-		try {
-			//Full path to file
-			var pathFull = vscode.window.activeTextEditor.document.fileName;
-			//Only path without file
-			var path = getFilePath(pathFull); // get the current file path
-			//onely file name and type
-			var fileNameAndType = getFileNameAndType(pathFull);
-			
-			//Obsolete but usefull in later context 
-			// var fileName = getFileName(pathFull);
-			// var fileType = getFileType(pathFull);
 
-			//Check for file type
-			if(getFileType(pathFull) != "tex"){
-				//If not tex throw error with message
-				throw new Error("Can't create PDF, open a .tex file.")
-			}
+    var pdflatex = vscode.commands.registerCommand('extension.latexCompile', function () {
 
-			//Log the command to run
-			console.log('cd ' + path + ' && pdflatex ' + fileNameAndType);
-			
-			//Run the command
-			var exec = require('child_process').exec,
-			cmd = exec('cd ' + path + ' && pdflatex ' + fileNameAndType);
-			
+        try {
+            //Full path to file
+            var pathFull = vscode.window.activeTextEditor.document.fileName;
+            //Only path without file
+            var path = getFilePath(pathFull); // get the current file path
+            //onely file name and type
+            var fileNameAndType = getFileNameAndType(pathFull);
+            var fileName = getFileName(pathFull);
+            var filePath = getFilePath(pathFull);
+            // var fileType = getFileType(pathFull);
+            var pdfFileName = filePath + fileName + ".pdf"            
 
-			
+            //Check for file type
+            if (getFileType(pathFull) != "tex") {
+                //If not tex throw error with message
+                throw new Error("Can't create PDF, open a .tex file.")
+            }
 
-			//Subscribe to output
-			cmd.stdout.on('data',function (data) {
-				//Logs output to console
-				console.log(String(data));
+            //Log the command to run
+            console.log('cd ' + path + ' && pdflatex ' + fileNameAndType);
+
+            setStatusBarText('Generating', "PDF");
+            
+            //Run the command
+            var exec = require('child_process').exec,
+                cmd = exec('cd ' + path + ' && pdflatex ' + fileNameAndType);
+					
+            //Subscribe to output
+            cmd.stdout.on('data', function (data) {
+                //Logs output to console
+                console.log(String(data));
 				
-				//If error is found in output, display an error to user
-				if (String(data).toLowerCase().indexOf("error") > 0){
-					//Show error
-					vscode.window.showErrorMessage("Can't create PDF, see " + getFileName(pathFull) + ".log");
-				}
-			});
-			
-				vscode.window.showInformationMessage('PDF Compilled at ' + path);
-			
-		} catch (error) {
-			//Catch error and show the user the message in the error
-			vscode.window.showErrorMessage(error.message);
-		}
-	});
-	//Function to get file name and type
-	function getFileNameAndType(file) {
+                //If error is found in output, display an error to user
+                if (String(data).toLowerCase().indexOf("error") > 0) {
+                    //Show error
+                    vscode.window.showErrorMessage("Can't create PDF, see " + getFileName(pathFull) + ".log");
+                }
+            });
+
+            cmd.stdout.on('close', function () {
+                if (vscode.workspace.getConfiguration('latexCompile')["openAfterCompile"]) {
+                    setStatusBarText('Launching', "PDF");
+                    if (process.platform == 'darwin') {
+                        exec('open ' + pdfFileName);
+                    } else {
+                        exec(pdfFileName);
+                    }
+                } else {
+                    vscode.window.showInformationMessage('PDF Compilled at ' + path);
+                }
+            });
+
+        } catch (error) {
+            //Catch error and show the user the message in the error
+            vscode.window.showErrorMessage(error.message);
+        }
+    });
+    //Function to get file name and type
+    function getFileNameAndType(file) {
         var forwardSlash = file.lastIndexOf("/");
         var backSlash = file.lastIndexOf("\\");
         if (forwardSlash === -1 && backSlash === -1) {
@@ -63,24 +74,24 @@ function activate(context) {
         }
         return file.substring((forwardSlash > backSlash) ? forwardSlash + 1 : backSlash + 1);
     }
-	//Function to get only file type
-	function getFileType(file) {
+    //Function to get only file type
+    function getFileType(file) {
         var stringFile = getFileNameAndType(file);
-		return stringFile.split(".")[1];
+        return stringFile.split(".")[1];
     }
-	//Function to get only file name
-	function getFileName(file) {
+    //Function to get only file name
+    function getFileName(file) {
         var stringFile = getFileNameAndType(file);
-		return stringFile.split(".")[0];
+        return stringFile.split(".")[0];
     }
-	//Function to get only file path
-	function getFilePath(file) {
+    //Function to get only file path
+    function getFilePath(file) {
         var path = file;
-		path = path.match(/(.*)[\/\\]/)[1]||''; // extract the directory from the path
-		path += '/'
-		return path;
+        path = path.match(/(.*)[\/\\]/)[1] || ''; // extract the directory from the path
+        path += '/'
+        return path;
     }
-	context.subscriptions.push(pdflatex);
+    context.subscriptions.push(pdflatex);
 }
 exports.activate = activate;
 
@@ -88,3 +99,9 @@ exports.activate = activate;
 function deactivate() {
 }
 exports.deactivate = deactivate;
+
+function setStatusBarText(what, docType) {
+    var date = new Date();
+    var text = what + ' [' + docType + '] ' + date.toLocaleTimeString();
+    vscode.window.setStatusBarMessage(text, 1500);
+}
