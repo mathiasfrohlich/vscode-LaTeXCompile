@@ -11,7 +11,14 @@ Compiles .tex to .pdf using pdflatex at current file
   From the list of files displayed, select a file to open.
 
 ## Settings
-You can configure the settings, to open the PDF after compile
+You can configure some settings
+* Open the PDF after Compile
+* Open the log after Error
+```
+//Latex Compile Configuration
+	"latexCompile.openAfterCompile": true,
+	"latexCompile.openLogAfterError": true,
+```
 
 ```
 "properties": {
@@ -19,6 +26,11 @@ You can configure the settings, to open the PDF after compile
 		"type": "boolean",
 		"default": true,
 		"description": "Opens PDF after Latex Compile" 
+	},
+	"latexCompile.openLogAfterError": {
+		"type": "boolean",
+		"default": true,
+		"description": "Opens .vscodeLog if failed to Compile" 
 	}
 }
 ```
@@ -54,6 +66,10 @@ This version happened thanks to a community contribution.
 * Added Open After Compile Feature
 * Added Configuration option
 * Changed the message display to use status bar instead of showInformationMessage
+
+### Version 0.3.0 
+* Added Log file of error
+* Added Configuration option to show log file or not
         
 ## License
 

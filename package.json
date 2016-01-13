@@ -2,7 +2,7 @@
 	"name": "latexcompile",
 	"displayName": "LaTeX Compile",
 	"description": "An Visual Studio Code Extension, that compiles .tex to .pdf at location",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"publisher": "mathiasfrohlich",
 	"license": "SEE LICENSE IN LICENSE or README.MD",
 	"homepage": "https://github.com/mathiasfrohlich/vscode-LaTeXCompile/blob/master/README.md",
@@ -45,6 +45,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Opens PDF after Latex Compile" 
+                },
+				"latexCompile.openLogAfterError": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Opens LOG if failed to Compile" 
                 }
             }
         }

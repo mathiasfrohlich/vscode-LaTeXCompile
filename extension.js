@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
-
+var fs = require('fs');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
@@ -33,8 +33,11 @@ function activate(context) {
             
             //Run the command
             var exec = require('child_process').exec,
-                cmd = exec('cd ' + path + ' && pdflatex ' + fileNameAndType);
-					
+            cmd = exec('cd ' + path + ' && pdflatex ' + fileNameAndType);
+			
+			//Make log file to contain console		
+			exec('cd ' + path + ' && type NUL > '+fileName + ".vscodeLog");
+			
             //Subscribe to output
             cmd.stdout.on('data', function (data) {
                 //Logs output to console
@@ -43,7 +46,23 @@ function activate(context) {
                 //If error is found in output, display an error to user
                 if (String(data).toLowerCase().indexOf("error") > 0) {
                     //Show error
-                    vscode.window.showErrorMessage("Can't create PDF, see " + getFileName(pathFull) + ".log");
+                    vscode.window.setStatusBarMessage("Can't create PDF, see " + getFileName(pathFull) + ".vscodeLog", 12000);
+
+                	if (vscode.workspace.getConfiguration('latexCompile')["openLogAfterError"]) {
+							var consoleLogFile = vscode.Uri.file(path + fileName + ".vscodeLog");
+
+							vscode.workspace.openTextDocument(consoleLogFile).then(function (d) {
+								vscode.window.showTextDocument(d);
+								// Open file, add console string, save file.
+								var fd = fs.openSync(path+ fileName + ".vscodeLog", 'w+');
+								var buffer = new Buffer(String(data));
+								fs.writeSync(fd, buffer, 0, buffer.length);
+								fs.close(fd);
+								
+							});
+							
+					}
+					
                 }
             });
 
