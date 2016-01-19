@@ -49,17 +49,11 @@ You can configure some settings
         
 ## Change Log
 
-### Version 0.1.0
+### Version 0.1.x
 * Initial commit
-
-### Version 0.1.1
 * Included path in message
-
-### Version 0.1.2
 * Added Contribution guide to README.md
-
-### Version 0.1.3
-* Added comments to code
+* Added Comments
 
 ### Version 0.2.0 
 This version happened thanks to a community contribution.
