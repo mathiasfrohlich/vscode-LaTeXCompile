@@ -6,7 +6,8 @@ Compiles .tex to .pdf using pdflatex at current file
 
 ## Requirements
 Installed Latex program (Supporting cmd: pdflatex) 
-Like;
+
+Programs Like
 * Miktex for Windows 
 * Mactex for OSX
 
