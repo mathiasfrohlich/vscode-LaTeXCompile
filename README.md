@@ -27,21 +27,6 @@ You can configure some settings
 	"latexCompile.openLogAfterError": true,
 ```
 
-```
-"properties": {
-	"latexCompile.openAfterCompile": {
-		"type": "boolean",
-		"default": true,
-		"description": "Opens PDF after Latex Compile" 
-	},
-	"latexCompile.openLogAfterError": {
-		"type": "boolean",
-		"default": true,
-		"description": "Opens .vscodeLog if failed to Compile" 
-	}
-}
-```
-
 ## Contributing
 
 1. Fork it!
