@@ -56,6 +56,9 @@ This version happened thanks to a community contribution.
 ### Version 0.3.0 
 * Added Log file of error
 * Added Configuration option to show log file or not
+
+### Version 0.3.1 
+* Changes to instruction, README.md 
         
 ## License
 
