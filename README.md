@@ -4,6 +4,9 @@ Compiles .tex to .pdf using pdflatex at current file
 
 ![Image of Command](https://raw.githubusercontent.com/mathiasfrohlich/vscode-LaTeXCompile/master/images/command.png)
 
+## Requirements
+* Installed a Latex program that supports pdflatex from commandline like; Miktex for Windows, Mactex for OSX.
+
 ## How to install
 * Install [Visual Studio Code](https://code.visualstudio.com/)
 * Open `View -> Command Palette... and type ext install latex compile`
