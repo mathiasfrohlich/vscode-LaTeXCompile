@@ -2,7 +2,7 @@
 	"name": "latexcompile",
 	"displayName": "LaTeX Compile",
 	"description": "An Visual Studio Code Extension, that compiles .tex to .pdf at location",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"publisher": "mathiasfrohlich",
 	"license": "SEE LICENSE IN LICENSE or README.MD",
 	"homepage": "https://github.com/mathiasfrohlich/vscode-LaTeXCompile/blob/master/README.md",
@@ -15,7 +15,10 @@
 		"url": "https://github.com/mathiasfrohlich/vscode-LaTeXCompile/issues"
 	},
 	"engines": {
-		"vscode": "^0.10.1"
+		"vscode": "^0.10.8"
+	},
+	"scripts": {
+  		"postinstall": "node ./node_modules/vscode/bin/install"
 	},
 	"categories": [
 		"Other"
