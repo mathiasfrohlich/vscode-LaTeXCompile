@@ -57,9 +57,11 @@ This version happened thanks to a community contribution.
 * Added Log file of error
 * Added Configuration option to show log file or not
 
-### Version 0.3.1 + 0.3.2 
+### Version 0.3.1/2/3 
 * Changes to instruction, README.md 
 * Republish 
+* devDependencies 0.11.x
+
         
 ## License
 
