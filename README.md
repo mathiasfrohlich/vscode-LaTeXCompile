@@ -5,7 +5,8 @@ Compiles .tex to .pdf using pdflatex at current file
 ![Image of Command](https://raw.githubusercontent.com/mathiasfrohlich/vscode-LaTeXCompile/master/images/command.png)
 
 ## Requirements
-Installed Latex program (Supporting cmd: pdflatex) 
+Path to file must **not** include "space". relative path => relative_path<br />
+Installed Latex distribution (Supporting cmd: pdflatex) 
 
 Programs Like
 * Miktex for Windows 
@@ -34,6 +35,14 @@ You can configure some settings
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
+
+## Issues
+* Create Issus
+* Include this information: 
+
+System information:<br />
+OS: ... <br />
+LaTex Distribution: ... <br />
 
 ## Source
 
