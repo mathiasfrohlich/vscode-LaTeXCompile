@@ -53,6 +53,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Opens LOG if failed to Compile" 
+                },
+				"latexCompile.compiler": {
+                    "type": "string",
+                    "default": "pdflatex",
+                    "description": "The compiler to use" 
                 }
             }
         }

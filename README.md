@@ -22,10 +22,12 @@ Programs Like
 You can configure some settings
 * Open the PDF after Compile
 * Open the log after Error
+* Set the LaTeX compiler to be used (pdflatex, xelatex, lualatex)
 ```
 //Latex Compile Configuration
 	"latexCompile.openAfterCompile": true,
 	"latexCompile.openLogAfterError": true,
+	"latexCompile.compiler": "xelatex",
 ```
 
 ## Contributing
