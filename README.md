@@ -58,8 +58,9 @@ LaTex Distribution: ... <br />
 * Added Contribution guide to README.md
 * Added Comments
 
-### Version 0.2.0. Thanks to https://github.com/rashwell
+### Version 0.2.0
 This version happened thanks to a community contribution.
+Thanks to https://github.com/rashwell
 * Added Open After Compile Feature
 * Added Configuration option
 * Changed the message display to use status bar instead of showInformationMessage
@@ -71,7 +72,9 @@ This version happened thanks to a community contribution.
 * Republish 
 * devDependencies 0.11.x
 
-### Version 0.4.0. Thanks to https://github.com/caffinatedangel
+### Version 0.4.0
+This version happened thanks to a community contribution.
+Thanks to https://github.com/caffinatedangel
 * Added compiler option
 
         
