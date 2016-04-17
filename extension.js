@@ -18,22 +18,24 @@ function activate(context) {
             var fileName = getFileName(pathFull);
             var filePath = getFilePath(pathFull);
             // var fileType = getFileType(pathFull);
-            var pdfFileName = filePath + fileName + ".pdf"            
+            var pdfFileName = filePath + fileName + ".pdf";            
 
             //Check for file type
             if (getFileType(pathFull) != "tex") {
                 //If not tex throw error with message
-                throw new Error("Can't create PDF, open a .tex file.")
+                throw new Error("Can't create PDF, open a .tex file.");
             }
+            
+            var command = 'cd ' + path + ' && '+vscode.workspace.getConfiguration('latexCompile').compiler+' ' + fileNameAndType;
 
             //Log the command to run
-            console.log('cd ' + path + ' && pdflatex ' + fileNameAndType);
+            console.log(command);
 
             setStatusBarText('Generating', "PDF");
             
             //Run the command
             var exec = require('child_process').exec,
-            cmd = exec('cd ' + path + ' && pdflatex ' + fileNameAndType);
+            cmd = exec(command);
 			
 			//Make log file to contain console		
 			exec('cd ' + path + ' && type NUL > '+fileName + ".vscodeLog");
@@ -48,7 +50,7 @@ function activate(context) {
                     //Show error
                     vscode.window.setStatusBarMessage("Can't create PDF, see " + getFileName(pathFull) + ".vscodeLog", 12000);
 
-                	if (vscode.workspace.getConfiguration('latexCompile')["openLogAfterError"]) {
+                	if (vscode.workspace.getConfiguration('latexCompile').openLogAfterError) {
 							var consoleLogFile = vscode.Uri.file(path + fileName + ".vscodeLog");
 
 							vscode.workspace.openTextDocument(consoleLogFile).then(function (d) {
@@ -67,7 +69,7 @@ function activate(context) {
             });
 
             cmd.stdout.on('close', function () {
-                if (vscode.workspace.getConfiguration('latexCompile')["openAfterCompile"]) {
+                if (vscode.workspace.getConfiguration('latexCompile').openAfterCompile) {
                     setStatusBarText('Launching', "PDF");
                     if (process.platform == 'darwin') {
                         exec('open ' + pdfFileName);
@@ -107,7 +109,7 @@ function activate(context) {
     function getFilePath(file) {
         var path = file;
         path = path.match(/(.*)[\/\\]/)[1] || ''; // extract the directory from the path
-        path += '/'
+        path += '/';
         return path;
     }
     context.subscriptions.push(pdflatex);

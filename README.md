@@ -1,6 +1,6 @@
 # LaTeX Compile
 
-Compiles .tex to .pdf using pdflatex at current file
+Compiles .tex to .pdf using commands like "pdflatex", at current file
 
 ![Image of Command](https://raw.githubusercontent.com/mathiasfrohlich/vscode-LaTeXCompile/master/images/command.png)
 
@@ -22,10 +22,12 @@ Programs Like
 You can configure some settings
 * Open the PDF after Compile
 * Open the log after Error
+* Set the LaTeX compiler to be used (pdflatex, xelatex, lualatex)
 ```
 //Latex Compile Configuration
 	"latexCompile.openAfterCompile": true,
 	"latexCompile.openLogAfterError": true,
+	"latexCompile.compiler": "xelatex",
 ```
 
 ## Contributing
@@ -56,8 +58,9 @@ LaTex Distribution: ... <br />
 * Added Contribution guide to README.md
 * Added Comments
 
-### Version 0.2.0 
+### Version 0.2.0
 This version happened thanks to a community contribution.
+Thanks to https://github.com/rashwell
 * Added Open After Compile Feature
 * Added Configuration option
 * Changed the message display to use status bar instead of showInformationMessage
@@ -65,11 +68,14 @@ This version happened thanks to a community contribution.
 ### Version 0.3.0 
 * Added Log file of error
 * Added Configuration option to show log file or not
-
-### Version 0.3.1/2/3 
 * Changes to instruction, README.md 
 * Republish 
 * devDependencies 0.11.x
+
+### Version 0.4.0
+This version happened thanks to a community contribution.
+Thanks to https://github.com/caffinatedangel
+* Added compiler option
 
         
 ## License
