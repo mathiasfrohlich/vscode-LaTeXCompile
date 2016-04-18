@@ -57,7 +57,12 @@
                     "type": "string",
                     "default": "pdflatex",
                     "description": "The compiler to use" 
-                }
+                },
+				"latexCompile.mainFile": {
+					"type": ["string", "null"],
+					"default": null,
+					"description": "The main document to compile"
+				}
             }
         }
 	},

@@ -6,11 +6,20 @@ var fs = require('fs');
 // your extension is activated the very first time the command is executed
 function activate(context) {
 
-    var pdflatex = vscode.commands.registerCommand('extension.latexCompile', function () {
+    var pdflatex = vscode.commands.registerCommand('extension.latexCompile', function() {
 
         try {
-            //Full path to file
+            vscode.workspace.saveAll();
             var pathFull = vscode.window.activeTextEditor.document.fileName;
+
+            if (vscode.workspace.getConfiguration('latexCompile').mainFile) {
+                if (vscode.workspace.rootPath) {
+                    pathFull = vscode.workspace.rootPath + "/" + vscode.workspace.getConfiguration('latexCompile').mainFile;
+                } else {
+                    throw new Error('Use of mainFile requires a folder to be opened');
+                }
+            }
+
             //Only path without file
             var path = getFilePath(pathFull); // get the current file path
             //Only file name and type
@@ -18,57 +27,57 @@ function activate(context) {
             var fileName = getFileName(pathFull);
             var filePath = getFilePath(pathFull);
             // var fileType = getFileType(pathFull);
-            var pdfFileName = filePath + fileName + ".pdf";            
+            var pdfFileName = filePath + fileName + ".pdf";
 
             //Check for file type
             if (getFileType(pathFull) != "tex") {
                 //If not tex throw error with message
                 throw new Error("Can't create PDF, open a .tex file.");
             }
-            
-            var command = 'cd ' + path + ' && '+vscode.workspace.getConfiguration('latexCompile').compiler+' ' + fileNameAndType;
+
+            var command = 'cd ' + path + ' && ' + vscode.workspace.getConfiguration('latexCompile').compiler + ' ' + fileNameAndType;
 
             //Log the command to run
             console.log(command);
 
             setStatusBarText('Generating', "PDF");
-            
+
             //Run the command
             var exec = require('child_process').exec,
-            cmd = exec(command);
-			
-			//Make log file to contain console		
-			exec('cd ' + path + ' && type NUL > '+fileName + ".vscodeLog");
-			
+                cmd = exec(command);
+
+            //Make log file to contain console		
+            exec('cd ' + path + ' && type NUL > ' + fileName + ".vscodeLog");
+
             //Subscribe to output
-            cmd.stdout.on('data', function (data) {
+            cmd.stdout.on('data', function(data) {
                 //Logs output to console
                 console.log(String(data));
-				
+
                 //If error is found in output, display an error to user
                 if (String(data).toLowerCase().indexOf("error") > 0) {
                     //Show error
                     vscode.window.setStatusBarMessage("Can't create PDF, see " + getFileName(pathFull) + ".vscodeLog", 12000);
 
-                	if (vscode.workspace.getConfiguration('latexCompile').openLogAfterError) {
-							var consoleLogFile = vscode.Uri.file(path + fileName + ".vscodeLog");
+                    if (vscode.workspace.getConfiguration('latexCompile').openLogAfterError) {
+                        var consoleLogFile = vscode.Uri.file(path + fileName + ".vscodeLog");
 
-							vscode.workspace.openTextDocument(consoleLogFile).then(function (d) {
-								vscode.window.showTextDocument(d);
-								// Open file, add console string, save file.
-								var fd = fs.openSync(path+ fileName + ".vscodeLog", 'w+');
-								var buffer = new Buffer(String(data));
-								fs.writeSync(fd, buffer, 0, buffer.length);
-								fs.close(fd);
-								
-							});
-							
-					}
-					
+                        vscode.workspace.openTextDocument(consoleLogFile).then(function(d) {
+                            vscode.window.showTextDocument(d);
+                            // Open file, add console string, save file.
+                            var fd = fs.openSync(path + fileName + ".vscodeLog", 'w+');
+                            var buffer = new Buffer(String(data));
+                            fs.writeSync(fd, buffer, 0, buffer.length);
+                            fs.close(fd);
+
+                        });
+
+                    }
+
                 }
             });
 
-            cmd.stdout.on('close', function () {
+            cmd.stdout.on('close', function() {
                 if (vscode.workspace.getConfiguration('latexCompile').openAfterCompile) {
                     setStatusBarText('Launching', "PDF");
                     if (process.platform == 'darwin') {
@@ -117,8 +126,7 @@ function activate(context) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {
-}
+function deactivate() {}
 exports.deactivate = deactivate;
 
 function setStatusBarText(what, docType) {
