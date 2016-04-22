@@ -30,6 +30,7 @@ You can configure some settings
 	"latexCompile.openLogAfterError": true,
 	"latexCompile.compiler": "xelatex"
 ```
+
 ### Main Document Configuration ###
 A few notes...
 * This only works if you have a folder opened
@@ -63,7 +64,7 @@ LaTex Distribution: ... <br />
         
 ## Change Log
 
-### Version 0.1.x
+### Version 0.1.0
 * Initial commit
 * Included path in message
 * Added Contribution guide to README.md
@@ -88,7 +89,7 @@ This version happened thanks to a community contribution.
 Thanks to https://github.com/caffeinatedangel
 * Added compiler option
 
-### Version 0.?.? TODO: FILL THIS IN PLS IDK HOW VERSIONING WORKS AROUND HERE
+### Version 0.5.0
 This version happened thanks to a community contribution.
 Thanks to https://github.com/caffeinatedangel
 * Allows setting of a main document
