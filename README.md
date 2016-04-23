@@ -5,7 +5,6 @@ Compiles .tex to .pdf using commands like "pdflatex", at current file
 ![Image of Command](https://raw.githubusercontent.com/mathiasfrohlich/vscode-LaTeXCompile/master/images/command.png)
 
 ## Requirements
-Path to file must **not** include "space". relative path => relative_path<br />
 Installed Latex distribution (Supporting cmd: pdflatex) 
 
 Programs Like
