@@ -47,7 +47,7 @@ function activate(context) {
                 cmd = exec(command);
 
             //Make log file to contain console		
-            exec('cd ' + path + ' && type NUL > ' + fileName + ".vscodeLog");
+            exec('cd /d' + path + ' && type NUL > ' + fileName + ".vscodeLog");
 
             //Subscribe to output
             cmd.stdout.on('data', function(data) {
