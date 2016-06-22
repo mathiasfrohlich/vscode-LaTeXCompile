@@ -35,7 +35,7 @@ function activate(context) {
                 throw new Error("Can't create PDF, open a .tex file.");
             }
 
-            var command = 'cd ' + quote(path) + ' && ' + vscode.workspace.getConfiguration('latexCompile').compiler + ' ' + quote(fileNameAndType);
+            var command = 'cd /d' + quote(path) + ' && ' + vscode.workspace.getConfiguration('latexCompile').compiler + ' ' + quote(fileNameAndType);
 
             //Log the command to run
             console.log(command);
