@@ -35,7 +35,7 @@ function activate(context) {
                 throw new Error("Can't create PDF, open a .tex file.");
             }
 
-            var command = 'cd ' + path + ' && ' + vscode.workspace.getConfiguration('latexCompile').compiler + ' ' + fileNameAndType;
+            var command = 'cd ' + quote(path) + ' && ' + vscode.workspace.getConfiguration('latexCompile').compiler + ' ' + quote(fileNameAndType);
 
             //Log the command to run
             console.log(command);
@@ -47,7 +47,7 @@ function activate(context) {
                 cmd = exec(command);
 
             //Make log file to contain console		
-            exec('cd ' + path + ' && type NUL > ' + fileName + ".vscodeLog");
+            exec('cd ' + quote(path) + ' && type NUL > ' + quote(fileName) + ".vscodeLog");
 
             //Subscribe to output
             cmd.stdout.on('data', function(data) {
@@ -81,9 +81,9 @@ function activate(context) {
                 if (vscode.workspace.getConfiguration('latexCompile').openAfterCompile) {
                     setStatusBarText('Launching', "PDF");
                     if (process.platform == 'darwin') {
-                        exec('open ' + pdfFileName);
+                        exec('open ' + quote(pdfFileName));
                     } else {
-                        exec(pdfFileName);
+                        exec(quote(pdfFileName));
                     }
                 } else {
                     vscode.window.showInformationMessage('PDF Compilled at ' + path);
@@ -95,6 +95,12 @@ function activate(context) {
             vscode.window.showErrorMessage(error.message);
         }
     });
+    
+    //Function to put quotation marks around path
+    function quote(path) {
+        return '"' + path + '"';
+    }
+    
     //Function to get file name and type
     function getFileNameAndType(file) {
         var forwardSlash = file.lastIndexOf("/");
