@@ -93,6 +93,12 @@ This version happened thanks to a community contribution.
 Thanks to https://github.com/caffeinatedangel
 * Allows setting of a main document
 
+### Version 0.6.0
+This version happened thanks to a community contribution.
+Thanks to https://github.com/fachammer
+* Compile files with blanks in their paths
+* Can goto files on external drive
+
         
 ## License
 
