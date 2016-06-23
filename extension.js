@@ -20,6 +20,7 @@ function activate(context) {
                 }
             }
 
+
             //Only path without file
             var path = getFilePath(pathFull); // get the current file path
             //Only file name and type
@@ -29,13 +30,20 @@ function activate(context) {
             // var fileType = getFileType(pathFull);
             var pdfFileName = filePath + fileName + ".pdf";
 
+            var changeDirectory = "cd "
+
+            if(process.platform == "win322")
+                changeDirectory = "cd /d ";
+
+            //console.log(changeDirectory);
+
             //Check for file type
             if (getFileType(pathFull) != "tex") {
                 //If not tex throw error with message
                 throw new Error("Can't create PDF, open a .tex file.");
             }
 
-            var command = 'cd /d' + quote(path) + ' && ' + vscode.workspace.getConfiguration('latexCompile').compiler + ' ' + quote(fileNameAndType);
+            var command = changeDirectory + quote(path) + ' && ' + vscode.workspace.getConfiguration('latexCompile').compiler + ' ' + quote(fileNameAndType);
 
             //Log the command to run
             console.log(command);
@@ -47,12 +55,12 @@ function activate(context) {
                 cmd = exec(command);
 
             //Make log file to contain console		
-            exec('cd /d' + quote(path) + ' && type NUL > ' + quote(fileName) + ".vscodeLog");
+            exec(changeDirectory + quote(path) + ' && type NUL > ' + quote(fileName) + ".vscodeLog");
 
             //Subscribe to output
             cmd.stdout.on('data', function(data) {
                 //Logs output to console
-                console.log(String(data));
+                //console.log(String(data));
 
                 //If error is found in output, display an error to user
                 if (String(data).toLowerCase().indexOf("error") > 0) {
