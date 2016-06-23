@@ -5,11 +5,15 @@ Compiles .tex to .pdf using commands like "pdflatex", at current file
 ![Image of Command](https://raw.githubusercontent.com/mathiasfrohlich/vscode-LaTeXCompile/master/images/command.png)
 
 ## Requirements
-Installed Latex distribution (Supporting cmd: pdflatex) 
+Installed Latex distribution
 
 Programs Like
 * Miktex for Windows 
 * Mactex for OSX
+
+Please note that there is a known issue with MacOSX El Capitan (10.11.x): 
+LaTeX tools are now located in /Library/TeX/texbin instead of /usr/texbin.
+https://tug.org/mactex/elcapitan.html
 
 ## How to install
 * Install [Visual Studio Code](https://code.visualstudio.com/)
