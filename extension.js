@@ -90,6 +90,8 @@ function activate(context) {
                     setStatusBarText('Launching', "PDF");
                     if (process.platform == 'darwin') {
                         exec('open ' + quote(pdfFileName));
+                    } else if (process.platform == 'linux') {
+                        exec('xdg-open ' + quote(pdfFileName));
                     } else {
                         exec(quote(pdfFileName));
                     }
