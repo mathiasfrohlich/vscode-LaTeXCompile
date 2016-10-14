@@ -104,6 +104,10 @@ Thanks to https://github.com/fachammer
 * Can goto files on external drive
 * Fixed a problem on OSX and Linux where "cd /d" are not possible
 
+### Version 0.7.0
+This version happened thanks to a community contribution.
+Thanks to https://github.com/jesege
+* Fixed PDF opening on Linux
         
 ## License
 
