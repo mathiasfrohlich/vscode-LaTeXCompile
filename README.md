@@ -1,3 +1,5 @@
+# This project is deprecated and will be sunset in the near future
+
 # LaTeX Compile
 
 Compiles .tex to .pdf using commands like "pdflatex", at current file
@@ -108,6 +110,10 @@ Thanks to https://github.com/fachammer
 This version happened thanks to a community contribution.
 Thanks to https://github.com/jesege
 * Fixed PDF opening on Linux
+
+### Version 0.7.1
+* Deprecated this project
+* Recommendation : https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop
         
 ## License
 
